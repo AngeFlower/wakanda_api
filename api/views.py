@@ -14,6 +14,38 @@ from .serializers import *
 class TokenPairView(TokenObtainPairView):
 	serializer_class = TokenPairSerializer
 
+class RegisterView(APIView):
+	serializer_class = RegisterSerializer
+	permission_classes = AllowAny,
+
+	def post(self, request, format=None):
+		username = request.data.get('username')
+		first_name = request.data.get('first_name')
+		last_name = request.data.get('last_name')
+		password = request.data.get('password')
+		email = request.data.get('email')
+		tel = request.data.get('tel')
+		avatar = request.data.get('avatar')
+
+		user_obj = User(
+			username = username,
+			first_name = first_name,
+			last_name = last_name
+			)
+
+		user_obj.set_password(password)
+		user_obj.email = email
+		user_obj.save()
+
+		utilisateur_obj = Utilisateur(
+			user = user_obj,
+			avatar = avatar,
+			tel = tel
+			)
+
+		utilisateur_obj.save()
+		return Response({'status':'Success'},201)
+
 class ProduitsViewSet(viewsets.ModelViewSet):
 	queryset = Produits.objects.all()
 	serializer_class = ProduitsSerializer

@@ -9,7 +9,7 @@ urlpatterns = [
     path('', include(router.urls)),
     path('login/', TokenPairView.as_view()),
     path('refresh/', TokenRefreshView.as_view()),
-    #path('register/', RegisterView.as_view()),
+    path('register/', RegisterView.as_view()),
     path('api_auth', include('rest_framework.urls')),
 
 ]

@@ -35,3 +35,14 @@ class UserSerializer(serializers.ModelSerializer):
 				'validators=[UnicodeUsernameValidator()]',
 			}
 		}
+
+class RegisterSerializer(serializers.Serializer):
+	username = serializers.CharField(required=True)
+	first_name = serializers.CharField(required=True)
+	last_name = serializers.CharField(required=True)
+	password = serializers.CharField(required=True)
+	email = serializers.CharField(required=True)
+	tel = serializers.CharField(required=True)
+	avatar = serializers.ImageField(required=True)
+
+
