@@ -49,3 +49,7 @@ class RegisterView(APIView):
 class ProduitsViewSet(viewsets.ModelViewSet):
 	queryset = Produits.objects.all()
 	serializer_class = ProduitsSerializer
+
+class UtilisateurViewSet(viewsets.ModelViewSet):
+	queryset = Utilisateur.objects.all()
+	serializer_class = UtilisateurSerializer

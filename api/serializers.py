@@ -13,6 +13,31 @@ class ProduitsSerializer(serializers.ModelSerializer):
 		model=Produits
 		fields="__all__"
 
+class UserSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = User
+		fields = ['username','first_name','last_name','password']
+
+class UtilisateurSerializer(serializers.ModelSerializer):
+	user = UserSerializer()
+	def create(self,obj):
+		user_obj = obj.pop('user')
+		user = User(username=user_obj['username'],
+			last_name=user_obj['last_name'],
+			first_name=user_obj['first_name'])
+		password = user_obj['password']
+		user.set_password(password)
+		user.is_active = True
+		utilisateur = Utilisateur(user=user,avatar=obj['avatar'],tel=obj['tel'])
+		user.save()
+		utilisateur.save()
+		return utilisateur
+
+		
+	class Meta:
+		model = Utilisateur
+		fields = '__all__'
+
 class TokenPairSerializer(TokenObtainPairSerializer):
 	
 	def validate(self,attrs):
