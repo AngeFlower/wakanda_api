@@ -50,6 +50,15 @@ class ProduitsViewSet(viewsets.ModelViewSet):
 	queryset = Produits.objects.all()
 	serializer_class = ProduitsSerializer
 
+class MarqueViewSet(viewsets.ModelViewSet):
+	queryset = Marque.objects.all()
+	serializer_class = MarqueSerializer
+
+class CategorieViewSet(viewsets.ModelViewSet):
+	queryset = Categorie.objects.all()
+	serializer_class = CategorieSerializer
+
+
 class UtilisateurViewSet(viewsets.ModelViewSet):
 	queryset = Utilisateur.objects.all()
 	serializer_class = UtilisateurSerializer

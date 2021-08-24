@@ -13,6 +13,17 @@ class ProduitsSerializer(serializers.ModelSerializer):
 		model=Produits
 		fields="__all__"
 
+class MarqueSerializer(serializers.ModelSerializer):
+	class Meta:
+		model=Marque
+		fields="__all__"
+
+class CategorieSerializer(serializers.ModelSerializer):
+	class Meta:
+		model=Categorie
+		fields="__all__"
+
+
 class UserSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = User
