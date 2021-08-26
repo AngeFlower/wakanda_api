@@ -9,9 +9,18 @@ from rest_framework.response import Response
 
 
 class ProduitsSerializer(serializers.ModelSerializer):
+
+	def to_representation(self,obj):
+		representation = super().to_representation(obj)
+		representation['categorie'] = CategorieSerializer(obj.categorie,many=False).data
+		representation['marque'] = MarqueSerializer(obj.marque,many=False).data
+		return representation
+
 	class Meta:
 		model=Produits
 		fields="__all__"
+
+
 
 class MarqueSerializer(serializers.ModelSerializer):
 	class Meta:
@@ -58,6 +67,7 @@ class TokenPairSerializer(TokenObtainPairSerializer):
 		data['username'] = self.user.username
 		data['first_name'] = self.user.first_name
 		data['last_name'] = self.user.last_name
+		data['id'] = self.user.id
 
 		return data
 
@@ -80,5 +90,12 @@ class RegisterSerializer(serializers.Serializer):
 	email = serializers.CharField(required=True)
 	tel = serializers.CharField(required=True)
 	avatar = serializers.ImageField(required=True)
+
+class GroupSerializer(serializers.ModelSerializer):
+	class Meta:
+		model=Group
+		fields="__all__"
+
+
 
 

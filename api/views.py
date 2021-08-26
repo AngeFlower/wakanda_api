@@ -62,3 +62,7 @@ class CategorieViewSet(viewsets.ModelViewSet):
 class UtilisateurViewSet(viewsets.ModelViewSet):
 	queryset = Utilisateur.objects.all()
 	serializer_class = UtilisateurSerializer
+
+class GroupViewSet(viewsets.ModelViewSet):
+	queryset = Group.objects.all()
+	serializer_class = GroupSerializer
