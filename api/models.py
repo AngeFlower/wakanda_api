@@ -70,6 +70,15 @@ class Achat(models.Model):
 	def __str__(self):
 		return f"{self.user.username} {self.produit.name} {self.quantite} {self.montant}"
 
+class Cart(models.Model):
+	id = models.AutoField(primary_key=True)
+	user = models.ForeignKey(User, related_name="acheteur", on_delete=models.CASCADE)
+	produit = models.ForeignKey(Produits, on_delete=models.CASCADE)
+	quantite = models.PositiveIntegerField()
+	amount = models.FloatField(null=True, blank=True)
+	def __str__(self):
+		return f"{self.user.username} a achete {self.produit.name} {self.quantity} pour {self.amount}"
+
 
 
 

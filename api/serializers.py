@@ -20,8 +20,6 @@ class ProduitsSerializer(serializers.ModelSerializer):
 		model=Produits
 		fields="__all__"
 
-
-
 class MarqueSerializer(serializers.ModelSerializer):
 	class Meta:
 		model=Marque
@@ -31,7 +29,6 @@ class CategorieSerializer(serializers.ModelSerializer):
 	class Meta:
 		model=Categorie
 		fields="__all__"
-
 
 class UserSerializer(serializers.ModelSerializer):
 	class Meta:
@@ -52,7 +49,6 @@ class UtilisateurSerializer(serializers.ModelSerializer):
 		user.save()
 		utilisateur.save()
 		return utilisateur
-
 		
 	class Meta:
 		model = Utilisateur
@@ -96,6 +92,14 @@ class GroupSerializer(serializers.ModelSerializer):
 		model=Group
 		fields="__all__"
 
+class VenteSerializer(serializers.ModelSerializer):
+	class Meta:
+		model=Vente
+		fields="__all__"
 
 
+class CartSerializer(serializers.ModelSerializer):
+	class Meta:
+		model=Cart
+		fields="__all__"
 

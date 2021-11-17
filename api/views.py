@@ -66,3 +66,11 @@ class UtilisateurViewSet(viewsets.ModelViewSet):
 class GroupViewSet(viewsets.ModelViewSet):
 	queryset = Group.objects.all()
 	serializer_class = GroupSerializer
+
+class VenteViewSet(viewsets.ModelViewSet):
+	queryset = Vente.objects.all()
+	serializer_class = VenteSerializer
+
+class CartViewSet(viewsets.ModelViewSet):
+	queryset = Cart.objects.all()
+	serializer_class = CartSerializer
